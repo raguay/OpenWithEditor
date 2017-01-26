@@ -1,0 +1,3 @@
+[
+	{ "keys": ["Shift+e"], "command": "open_with_editor" }
+]
