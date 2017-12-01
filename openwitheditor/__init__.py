@@ -1,5 +1,8 @@
 from fman import DirectoryPaneCommand, show_alert, load_json
 import os
+from fman.url import as_human_readable
+from fman.url import as_url
+
 
 class OpenWithEditor(DirectoryPaneCommand):
     def __call__(self):
@@ -9,6 +12,6 @@ class OpenWithEditor(DirectoryPaneCommand):
                 selected_files.append(self.get_chosen_files()[0])
             scriptLoc = load_json("OpenWithEditor.json")["scriptLoc"]
             for file in selected_files:
-                os.system("'" + scriptLoc + "' 'file' '" + file + "' &")
+                os.system("'" + scriptLoc + "' 'file' '" + as_human_readable(file) + "' &")
         else:
             show_alert("No files or directories selected")
