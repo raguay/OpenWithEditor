@@ -18,6 +18,4 @@ class OpenWithEditor(DirectoryPaneCommand):
                 else:
                     show_alert("No files or directories selected")
         else:
-            selected_files[0] = url
-            for file in selected_files:
-                os.system("'" + scriptLoc + "' 'file' '" + as_human_readable(file) + "' &")
+            os.system("'" + scriptLoc + "' 'file' '" + as_human_readable(url) + "' &")
