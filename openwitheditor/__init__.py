@@ -4,7 +4,7 @@ from fman.url import as_human_readable
 from fman.url import as_url
 
 
-class OpenWithEditor(DirectoryPaneCommand):
+class BbOpenWithEditor(DirectoryPaneCommand):
     def __call__(self, url=None):
         selected_files = []
         scriptLoc = load_json("OpenWithEditor.json")["scriptLoc"]
