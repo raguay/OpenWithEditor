@@ -16,4 +16,4 @@ Pressing **F4** with files selected or simply highlighted will open the file in 
 
 ### Features
 
- - Opens selected files in the editor specified by the **BitBar** plugin.
+ - Opens selected files in the editor specified by the **BitBar** or **TextBar** plugin.
