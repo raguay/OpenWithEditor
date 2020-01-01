@@ -12,7 +12,7 @@ After restarting **fman**, you will be able to select the editor you are current
 
 Since this plugin used files from the above two mentioned plugins for TextBar or BitBar, this plugin is intended for and usable mostly on a macOS system. It should be usable on other systems if you create the needed files in your home directory yourself.
 
-If you add the editor 'oni2' to your list of editors (the editor name can be anything, it is checking for the editor to be oni2 in the `.myeditorchoice` file), then it will launch the oni2 editor at the location `/Applications/Onivim2.App/Contents/MacOS/Oni2`. Since Oni2 currently doesn't load files the normal macOS style, it has to be done by command line.
+If you add the editor 'oni2' to your list of editors (the editor name can be anything, it is checking for the editor to be oni2 in the `.myeditorchoice` file), then it will launch the [Oni2](https://v2.onivim.io/) editor at the location `/Applications/Onivim2.App/Contents/MacOS/Oni2`. Since Oni2 currently doesn't load files the normal macOS style, it has to be done by command line.
 
 ### Usage
 
