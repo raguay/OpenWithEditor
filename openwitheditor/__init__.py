@@ -1,5 +1,5 @@
 from fman import DirectoryPaneCommand, show_alert
-import os
+import subprocess, os
 from fman.url import as_human_readable
 
 
@@ -28,6 +28,6 @@ class MyOpenWithEditor(DirectoryPaneCommand):
 
 def editFile(editor, file):
     if editor == 'oni2':
-        os.system("/Applications/Onivim2.App/Contents/MacOS/Oni2 '" + as_human_readable(file) + "' &")
+        subprocess.run(["/Applications/Onivim2.App/Contents/MacOS/Oni2", as_human_readable(file)])
     else:
-        os.system("/usr/bin/open -a '" + editor + "' '" + as_human_readable(file) + "' &")
+        subprocess.run(["/usr/bin/open", "-a", editor, as_human_readable(file)])
