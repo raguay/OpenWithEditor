@@ -27,4 +27,7 @@ class MyOpenWithEditor(DirectoryPaneCommand):
 
 
 def editFile(editor, file):
-    os.system("/usr/bin/open -a '" + editor + "' '" + as_human_readable(file) + "' &")
+    if editor == 'oni2':
+        os.system("/Applications/Onivim2.App/Contents/MacOS/Oni2 '" + as_human_readable(file) + "' &")
+    else:
+        os.system("/usr/bin/open -a '" + editor + "' '" + as_human_readable(file) + "' &")
