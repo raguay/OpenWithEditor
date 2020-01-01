@@ -28,6 +28,6 @@ class MyOpenWithEditor(DirectoryPaneCommand):
 
 def editFile(editor, file):
     if editor == 'oni2':
-        subprocess.run(["/Applications/Onivim2.App/Contents/MacOS/Oni2", as_human_readable(file)])
+        subprocess.run("/Applications/Onivim2.App/Contents/MacOS/Oni2 '" + as_human_readable(file) + "'",shell=True)
     else:
         subprocess.run(["/usr/bin/open", "-a", editor, as_human_readable(file)])
