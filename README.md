@@ -20,6 +20,7 @@ Pressing **F4** with files selected or simply highlighted will open the file in 
 
 The following Commands are available as well:
 
+| Command | Description |
 | -- | ----- |
 | My open with editor | This will open the currently selected or file under the cursor to edit in the editor already chosen. |
 | Set editor to use | This will list all the editors in the `~/.myeditors` file allowing the user to pick one. That editor will be used to open files. |
