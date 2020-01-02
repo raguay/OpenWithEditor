@@ -12,12 +12,28 @@ After restarting **fman**, you will be able to select the editor you are current
 
 Since this plugin used files from the above two mentioned plugins for TextBar or BitBar, this plugin is intended for and usable mostly on a macOS system. It should be usable on other systems if you create the needed files in your home directory yourself.
 
-If you add the editor 'oni2' to your list of editors (the editor name can be anything, it is checking for the editor to be oni2 in the `.myeditorchoice` file), then it will launch the [Oni2](https://v2.onivim.io/) editor at the location `/Applications/Onivim2.App/Contents/MacOS/Oni2`. Since Oni2 currently doesn't load files the normal macOS style, it has to be done by command line.
+These commands described in the **Usage** area can be used to create the editor list. Therefore, the other programs are not necessary to use this plugin anymore.
 
 ### Usage
 
 Pressing **F4** with files selected or simply highlighted will open the file in the editor that you specify in the plugin. Changing the current editor in the **BitBar** plugin will change which editor is used instantly.
 
+The following Commands are available as well:
+
+| -- | ----- |
+| My open with editor | This will open the currently selected or file under the cursor to edit in the editor already chosen. |
+| Set editor to use | This will list all the editors in the `~/.myeditors` file allowing the user to pick one. That editor will be used to open files. |
+| Add editor to use | This will ask for an editor display name and path. This will be saved in the `~/.myeditors` file and used to display in the `Set editor to use` command. |
+| Add editor alias path | This allows the user to set a command line path to a command to open the editor. This alias should be used for the path in `Add editor to use` command. |
+| Remove editor | This allows the user to remove an editor from the list of editors. |
+
 ### Features
 
- - Opens selected files in the editor specified by the **BitBar** or **TextBar** plugin.
+ - Opens selected files in the editor specified by the **BitBar** plugin, **TextBar** plugin, or Alfred workflow.
+ - Add and remove editors to be used.
+ - Add editor aliases to use for running command line programs for the editor.
+
+## Things to Add
+
+ - Specify a different command then `open -a` to open programs so that the plugin can be used on other OSes.
+
