@@ -27,6 +27,7 @@ The following Commands are available as well:
 | Add editor to use | This will ask for an editor display name and path. This will be saved in the `~/.myeditors` file and used to display in the `Set editor to use` command. |
 | Add editor alias path | This allows the user to set a command line path to a command to open the editor. This alias should be used for the path in `Add editor to use` command. |
 | Remove editor | This allows the user to remove an editor from the list of editors. |
+| Remove Alias | This allows the user to remove an editor path alias from the list of them. |
 
 ### Features
 

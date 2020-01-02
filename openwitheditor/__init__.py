@@ -52,15 +52,10 @@ class MyOpenWithEditor(DirectoryPaneCommand):
 #                   file        The file to edit
 #
 def editFile(editor, file):
-    global editors
-    if editors is None:
-        #
-        # Get the alias list or create a empty list if none have been specified.
-        #
-        editors = load_json('editors.json')
-        if editors is None:
-            editors = dict()
-            save_json('editors.json',editors)
+    #
+    # Get the alias list or create a empty list if none have been specified.
+    #
+    editors = getAliases()
     if editor in editors:
         #
         # It's an alias, use the program path for the proper command line to use.
@@ -73,6 +68,21 @@ def editFile(editor, file):
         subprocess.run(["/usr/bin/open", "-a", editor, as_human_readable(file)])
 
 #
+# Function:         getAliases
+#
+# Description:      This function gets the list of aliases from a file or
+#                   already loaded in the global variable.
+#
+def getAliases():
+    global editors
+    if editors is None:
+        editors = load_json('editors.json')
+        if editors is None:
+            editors = dict()
+            save_json('editors.json',editors)
+    return editors
+
+#
 # Class:        AddEditorAliasPath
 #
 # Description:  This directory command allows the user to add a new path for
@@ -81,7 +91,6 @@ def editFile(editor, file):
 #
 class AddEditorAliasPath(DirectoryPaneCommand):
     def __call__(self, url=None):
-        global editors
         name = None
         loc = None
         name, ok = show_prompt("What alias name do you want for the editor?")
@@ -91,8 +100,7 @@ class AddEditorAliasPath(DirectoryPaneCommand):
                 #
                 # Save the editor alias for future use.
                 #
-                if editors is None:
-                    editors = dict()
+                editors = getAliases()
                 editors[name] = loc
                 save_json('editors.json',editors)
             else:
@@ -206,5 +214,28 @@ class RemoveEditor(DirectoryPaneCommand):
                 match = contains_chars(editorName.lower(), query.lower())
                 if match or not query:
                     yield QuicksearchItem(editorName, highlight=match)
+
+#
+# Class:        RemoveAlias
+#
+# Description:  This command removes an alias to use for launching an editor.
+#
+class RemoveAlias(DirectoryPaneCommand):
+    def __call__(self, url=None):
+        show_status_message('Remove Editor Alias...')
+        result = show_quicksearch(self._suggest_editor)
+        if result:
+            query, editorName = result
+            editorList = getAliases()
+            del editorList[editorName]
+            save_json('editors.json',editorList)
+        clear_status_message()
+
+    def _suggest_editor(self, query):
+        editorList = getAliases()
+        for alias in editorList:
+            match = contains_chars(alias.lower(), query.lower())
+            if match or not query:
+                yield QuicksearchItem(alias, highlight=match)
 
 
